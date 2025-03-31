@@ -147,18 +147,11 @@ datos.forEach(objeto => {
 
   if (objeto.Inventario >= 1) {
     categoriasUnicas.add(objeto.Categoria);
-<<<<<<< HEAD
 
   }
 });
 
-=======
-  
-  }
-});
 
-
->>>>>>> 6cb37447b4594a689b36bd99d648241c20c38951
 // Crear los elementos de lista dinámicamente utilizando las categorías únicas
 categoriasUnicas.forEach(categoria => {
   const lil = document.createElement("li");
@@ -166,18 +159,9 @@ categoriasUnicas.forEach(categoria => {
   boton.textContent = categoria;
   boton.className = "dropdown-item";
   boton.type = "button";
-<<<<<<< HEAD
- 
-
   // Agregar evento de clic al botón
   boton.addEventListener("click", () => {
   
-=======
-
-
-  // Agregar evento de clic al botón
-  boton.addEventListener("click", () => {
->>>>>>> 6cb37447b4594a689b36bd99d648241c20c38951
     FILTROS = boton.textContent;
 
     //eliminamos el contenido del cATALOGO PARA MOSTRAR EL CONTENIDO FILTRADO
@@ -208,7 +192,7 @@ categoriasUnicas.forEach(categoria => {
     console.log("Botón seleccionado:", FILTROS);
     //CAMBIAMOS EL NOMBRE AL BOTON PRINCIPAL DEL MENU DESPLEGABLE POR EL SELECCIONADO
     //nombreDesplegable.textContent = FILTROS;
-<<<<<<< HEAD
+
     const dropdownItems = document.querySelectorAll(".dropdown-item");
 
     dropdownItems.forEach((item) => {
@@ -217,8 +201,6 @@ categoriasUnicas.forEach(categoria => {
     boton.style.fontWeight = 'bold';
 
 
-=======
->>>>>>> 6cb37447b4594a689b36bd99d648241c20c38951
     //PONEMOS A ESCUCHAR LOS BOTONES NUEVAMENTE
 
     escucharBotones();
