@@ -147,10 +147,18 @@ datos.forEach(objeto => {
 
   if (objeto.Inventario >= 1) {
     categoriasUnicas.add(objeto.Categoria);
+<<<<<<< HEAD
 
   }
 });
 
+=======
+  
+  }
+});
+
+
+>>>>>>> 6cb37447b4594a689b36bd99d648241c20c38951
 // Crear los elementos de lista dinámicamente utilizando las categorías únicas
 categoriasUnicas.forEach(categoria => {
   const lil = document.createElement("li");
@@ -158,11 +166,18 @@ categoriasUnicas.forEach(categoria => {
   boton.textContent = categoria;
   boton.className = "dropdown-item";
   boton.type = "button";
+<<<<<<< HEAD
  
 
   // Agregar evento de clic al botón
   boton.addEventListener("click", () => {
   
+=======
+
+
+  // Agregar evento de clic al botón
+  boton.addEventListener("click", () => {
+>>>>>>> 6cb37447b4594a689b36bd99d648241c20c38951
     FILTROS = boton.textContent;
 
     //eliminamos el contenido del cATALOGO PARA MOSTRAR EL CONTENIDO FILTRADO
@@ -193,6 +208,7 @@ categoriasUnicas.forEach(categoria => {
     console.log("Botón seleccionado:", FILTROS);
     //CAMBIAMOS EL NOMBRE AL BOTON PRINCIPAL DEL MENU DESPLEGABLE POR EL SELECCIONADO
     //nombreDesplegable.textContent = FILTROS;
+<<<<<<< HEAD
     const dropdownItems = document.querySelectorAll(".dropdown-item");
 
     dropdownItems.forEach((item) => {
@@ -201,6 +217,8 @@ categoriasUnicas.forEach(categoria => {
     boton.style.fontWeight = 'bold';
 
 
+=======
+>>>>>>> 6cb37447b4594a689b36bd99d648241c20c38951
     //PONEMOS A ESCUCHAR LOS BOTONES NUEVAMENTE
 
     escucharBotones();
@@ -641,22 +659,37 @@ eventCerrCanvas.eventCerrCanvas();
 
 // Función para generar el enlace de WhatsApp
 function generarEnlaceWhatsApp() {
+<<<<<<< HEAD
   const telefono = "5491168162451"; // Reemplaza con el número de teléfono deseado
 
   // Construir el texto del mensaje con la información de los duplicados y los precios
   let textoCarrito = "Hola! Me interesan estos productos de la web:";
   let UnidadesProductosTotales=0;
 
+=======
+  const telefono = "5491125275189"; // Reemplaza con el número de teléfono deseado
+
+  // Construir el texto del mensaje con la información de los duplicados y los precios
+  let textoCarrito = "Hola! Me interesan estos productos de la web:";
+>>>>>>> 6cb37447b4594a689b36bd99d648241c20c38951
   itemCarrito.forEach(producto => {
     var precioCatalogo = (producto.Venta.replace(/,/g, ".") * producto.DOLAR * producto.Unidades);
     precioCatalogo = new Intl.NumberFormat('es-Mx', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(precioCatalogo);
 
     textoCarrito += `\n\n ${producto.Unidades} - ${producto.Descripción} -  $${precioCatalogo}`;
+<<<<<<< HEAD
 UnidadesProductosTotales +=producto.Unidades;
   });
   let tota = total();
   textoCarrito += `\n\n--- PRECIO TOTAL DEL CARRITO:${tota} \n\n`; // Agregar un salto de línea adicional
   textoCarrito += `\n\n--- Total de productos: ${UnidadesProductosTotales} \n\n`;
+=======
+
+  });
+  let tota = total();
+  textoCarrito += `\n\n--- PRECIO TOTAL DEL CARRITO:${tota} \n\n`; // Agregar un salto de línea adicional
+
+>>>>>>> 6cb37447b4594a689b36bd99d648241c20c38951
   const enlace = `https://wa.me/${telefono}/?text=${encodeURIComponent(textoCarrito)}`;
   return enlace;
 }
