@@ -290,7 +290,7 @@ datos.forEach(datos => {
   mBotones.mostrarBotones();
 });
 
-template.querySelector("H3").textContent = 'Precios solo en efectivo, debito, QR y transferencia.';
+template.querySelector("H3").textContent = 'Precios solo en efectivo.';
 
 
 let clone = document.importNode(template, true);
