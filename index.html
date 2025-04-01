@@ -6,59 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" href="IMG/logoBLANCO NUEVO.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Sublime Supplies</title>
+    <title>Valkiria Perfumeria</title>
+
+
 </head>
 
-<body>
+<body class="row">
     <div id="fondo">
-        <img id="fondo2" src="IMG/logo blanco.jpg">
+        <img id="fondo2" src="IMG/valkiria.jpeg">
 
     </div>
-<script>  const fondo = document.getElementById('fondo');
-    const fondo2 = document.getElementById('fondo2');
-    // Función para cambiar el z-index después de 4 segundos
-    function cambiarZIndex() {
-        fondo.style.zIndex = -50;
-        fondo.style.opacity = "30%";
-        fondo2.style.height = "200%";
-  
-    }
-  
-    // Llama a la función después de 4 segundos
-    setTimeout(cambiarZIndex, 2000);</script>
 
+    <header class=" col-12 table-responsive ">
 
-    <header>
-
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-rosa fixed-top " id="nav1" style="background-color: hsl(198, 9%, 45%);">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Sublime Supplies</a>
+                <a class="navbar-brand" href="#" style="color: #ffffff;">VALKIRIA Perfumeria</a>
+                <!-- boton carrito -->
+                <button id="listaInteres" type="button" class="btn btn-dark btn-sm" style="background-color: hsl(198, 9%, 45%);">Carrito
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-cart" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg>
+
+                    <span id="cantCarrito" class="badge text-bg-secondary bg-danger">
+
+                    </span>
+                </button>
+                <!-- total nav de carrito -->
+                <div id="totalCarritoNavb" class="" style="background-color: hsl(198, 9%, 45%);">$ 0.00</div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                <div class="offcanvas offcanvas-end text-bg-dark rounded" tabindex="-1" id="offcanvasDarkNavbar"
                     aria-labelledby="offcanvasDarkNavbarLabel">
                     <div class="offcanvas-header">
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
+                            aria-label="Close">
+                        </button>
                     </div>
-                    <div class="offcanvas-body">
 
+                    <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="tienda.html">Tienda</a>
+                            <li>
+
+                                <form class="d-flex justify-content-center " role="search" onsubmit="return false;">
+                                    <input id="formulario" class="form-control me-2" type="search"
+                                        placeholder="Buscar producto" aria-label="Search">
+
+                                </form>
                             </li>
 
 
+                        </ul>
+
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.html">Tienda</a>
                             </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="index.html">Inicio</a>
+                            </li>
+
 
                             <li class="nav-item">
                                 <a class="nav-link" href="contacto.html">Contacto</a>
@@ -66,7 +82,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    LISTAS DE PRECIOS
+                                    PRECIOS
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="tienda.html" target="_blank">Lista de insumos</a>
@@ -77,74 +93,131 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <!-- <li><a class="dropdown-item" href="mobiliarios.html">Mobiliarios</a></li> -->
-                                </ul>
-                            </li>
+                                   <li><a class="dropdown-item" href="mobiliarios.html">Mobiliarios</a></li> -->
+                                <!-- </ul>
+                                          
+                            </li>  -->
                         </ul>
 
                     </div>
                 </div>
             </div>
         </nav>
+        <header class="bg-gray py-5" style="background-color: hsl(309, 13%, 78%);">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Valkiria</h1>
+                    <p class="lead fw-normal text-white-40 mb-0">Articulos de Perfumeria y Limpieza</p>
 
-        </nav>
+                </div>
 
+            </div>
+
+        </header>
     </header>
+    <STYle>
+        .bg-gray.py-5 {
+            background-color: darkgrey;
+            opacity: 60%;
+
+            right: 0;
+            z-index: 39;
+            padding: 0%;
+            margin-right: 0 !important;
+            margin-bottom: 0px;
+            right: 0 !important;
+        }
 
 
 
-    <main>
-        <div class="container">
+        .display-4.fw-bolder {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </STYle>
+<!-- le saque el row al main para que se centre el filtrado -->
+    <!-- <main class="row"> -->
+        <main >
+        <template id="contTemplate3">
             <div class="tarjetas container">
+                <button id="toggleDiscountSection" class="btn btn-secondary">Ocultar sección de descuentos</button>
+                <div class=" row justify-content-center caca">
+                    <H3 class="card-text"></H3>
+                    <!-- <div class="card " >
+                        <img class="card-img-top" >
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text"></p>
+                            <p class="card-text"><small class="text-body-secondary"></small>
+                            </p>
+                        </div>
+                    </div>
+                 -->
+                </div>
+            </div>
+        </template>
 
-                <h1>Sublime Supplies</h1>
-                <h5>Insumos para tatuadores</h5>
 
-                </b>
-                <h4>Nuestros nuevos productos</h4>
+        <template id="contTemplate">
+            <div class="tarjetas ">
+                <div class=" row justify-content-center esteSi">
+                    <h3></h3>
+                    <!-- <div class="card " >
+                        <img class="card-img-top" >
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text"></p>
+                            <p class="card-text"><small class="text-body-secondary"></small>
+                            </p>
+                        </div>
+                    </div>
+                 -->
+                </div>
+            </div>
+        </template>
 
-                <div class=" row ">
-                    <div class="col-12 ">
+        <template id="contTemplate2">
+            <div class="col-sm-6 col-md-6  col-lg-4 col-6 mb-4">
+                <!-- <div class="col-sm-6 col-md-4  col-lg-3 col-6 mb-3"> este para que entren mas -->
+                <!-- col-6 mb-4  hace que sea mas chiquito-->
 
-                        <div class="card-group tarjetas2">
-                            <div class="card  ">
-                                <img src="imgcarrito/1.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Pigmentos HARBOR</h5>
-                                    <p class="card-text">Pigmentos de alta calidad</p>
-                                    <p class="card-text"><small class="text-body-secondary">Colores brillantes y
-                                            duraderos!</small>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <img src="imgcarrito/288.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Espuma de limpieza HARBOR</h5>
-                                    <p class="card-text">Alta espuma, anticeptico y desinflamante!</p>
-                                    <p class="card-text"><small class="text-body-secondary">Con extracto de Hamamelis,
-                                            Clorhexidina y Vitamina 'E'</small>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <img src="imgcarrito/287.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Espuma de limpieza HARBOR</h5>
-                                    <p class="card-text">Alta espuma, anticeptico y desinflamante!</p>
-                                    <p class="card-text"><small class="text-body-secondary">Con extracto de Hamamelis,
-                                            Cloroxilenol y Vitamina 'E'</small>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <img src="imgcarrito/185.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Witch Hazel concentrado HARBOR</h5>
-                                    <p class="card-text">Desinflamante, astringente. calma y purifica la piel!</p>
-                                    <p class="card-text"><small class="text-body-secondary">Extracto de Hamamelis
-                                            Concentrado!.</small>
-                                    </p>
+                <div class="card-group tarjetas2 ">
+                    <div class="card ">
+                        <img class="card-img-top img-prod" onerror="this.src='./imgcarrito/IMGND.jpg'"
+                            alt="Imagen no encontrada">
+                        <div class="row">
+                            <div>
+                                <div class="card contentarj h-100">
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div>
+                                            <h5 class="card-title"></h5>
+
+
+                                            <div class="variantes">
+                                            </div>
+
+
+
+
+
+                                            <p class="card-text"></p><small class="text-body-secondary"></small>
+                                        </div>
+                                        <div>
+                                            <p>Cantidad:
+                                                <input type="number" name="cantidad" id="" class="cantidad" value="1"
+                                                    min="1" max="">
+                                            </p>
+
+                                            <button type="button"
+                                                class="btn btn-dark inter d-block mx-auto botonaparecer">
+                                                Agregar
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -152,61 +225,175 @@
 
                 </div>
             </div>
+
+
+        </template>
+        <!-- <template id="contTemplate4">
+<div class="Variante">
+
+    <select class="form-select mb-2 tVariante" aria-label="Default select example" id="">
+        <option value="1">RL</option>
+        <option value="2">M1</option>
+        <option value="3">RM</option>
+        <option value="4">RS</option>
+      </select>
+
+                <select class="form-select mb-2 tMedida" aria-label="Default select example" id="">
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="7">7</option>
+                    <option value="9">9</option>
+                    <option value="11">11</option>
+                    <option value="13">13</option>
+                    <option value="15">15</option>
+                  </select>
+    
+            </div>
+          
+        </template> -->
+
+        <div class="tarjetas contenedor">
+
             <div class="row">
                 <div class="col">
-                    <section>
-                        <b>
-                            <h1>Sublime Supplies</h1>
-                        </b>
+                    <P></P>
+                    <h2>TIENDA ONLINE</h2>
+                    <div class="bg-gray py-5" style="background-color: hsl(309, 13%, 78%);">
 
-                        <br>
-                        <h4>Sobre nosotros</h4>
-                        <br>
-                        <br>
-                        <p class="home">Somos una empresa responsable y dedicada hacia nuestros clientes y sus
-                            necesidades,<br>
-                            con el objetivo de mejorar cada dia y poder abastecerlos con todos los insumos necesarios
-                            para <br>
-                            que puedan realizar este bello arte del tattoo.
-                        </p>
+                        <div class="dropdown porCategoria">
+                            <!-- 
+                            <button class="btn btn-primary dropdown-toggle nombreDesplegable" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Ver por categoria
+                            </button> -->
+                            <ul class="nav porCategoriaUl">
+                            
+                            </ul>
+                             <!-- <ul class="dropdown-menu porCategoriaUl">
+                            </ul> -->
+                        </div>
 
-
-                    </section>
-
-
-                    <section>
-                        <p class="home">
-
-                            Trabajamos con variedad de productos, tanto propios, como nacionales e importados.
-
-                        </p>
-                        <br>
-
-                        <p class="home2">
+                    </div>
 
 
-                        <ul>
-                            <b>
-                                <p> Nos destacamos en la fabricacion de productos como:</p>
-                            </b>
-                            <li>Pigmentos, espumas y diluyentes</li>
-                            <li>Maquinas pen, tanto clasicas como portatiles.</li>
-                            <li>Fuentes de alimentacion para todo tipo de maquinas para tatuar.</li>
-                            <li>Cables y Pedales.</li>
-                        </ul>
+                </div>
+
+            </div>
+            <!-- necesito agregar class display none -->
+            <!-- agregamos esto para sombras en class " shadow-lg p-3 mb-5  rounded" -->
+            <div class="offcanvas offcanvas-start hide text-bg-dark shadow-lg p-3 mb-5  rounded" tabindex="-1"
+                id="offcanvasDark" aria-labelledby="offcanvasDarkLabel" style="background-color: hsl(198, 9%, 45%);">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkLabel">Carrito de productos</h5>
+
+                    <button id="cerrarCanvas" type="button" class="btn-close btn-close-white"
+                        data-bs-dismiss="offcanvasDark" aria-label="Close"></button>
+                </div>
+                <P id="precioTotal" style="text-align: start;">PRECIO TOTAL: $</P>
+                <br>
+                <div id="whats"></div>
+                <div class="offcanvas-body">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="card">
+                                    <p>PRODUCTOS</p>
+                                    <div id="aca">
+                                        <ul id="interes" class="list-group" style="cursor: pointer">
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Precione en el producto para eliminar cantidad</p>
+
+                                <br>
+
+                                <h4>Precios solo en efectivo</h4>
+                                <p>PRECIOS SUJETOS A CAMBIOS SIN PREVIO AVISO.</p>
+
+                                <p>Al enviar su carrito por WhatsApp, recibira atencion personalizada.</p>
+
+                                <p>Imagenes a modo ilustrativo</p>
+
+                                <div id="borrarCarr" class="alert alert-success fade disable hide"></div>
 
 
-                        </p>
-                    </section>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
+            <!-- etiquetas del alert -->
+            <div id="alertAgrego" class="alert alert-success fade hide" role="alert" style="z-index: -50 !important;">
 
-
-
-
-
+                <strong id="alertTit"></strong>
+                <div id="alertSuceso"></div>
+            </div>
     </main>
+
+
+    <!--
+     Flexbox container for aligning the toasts 
+    <div aria-live="polite" aria-atomic="true"
+        class="d-flex position-fixed justify-content-center align-items-center w-100 "
+        style="z-index: 9999999 !important;height: 10%;" id="propagandaPadre">
+
+         Then put toasts within 
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" id="propaganda">
+            <div class="toast-header">
+
+                <strong class="me-auto">NUEVO PRODUCTO!</strong>
+
+                <small><b></b></small>
+
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="close"></button>
+            </div>
+            <ul>
+                <li>
+                    <div class="spinner-grow spinner-grow-sm" role="status">
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <div class="toast-body d-flex justify-content-center ">
+
+                <img src="" onerror="this.src='./imgcarrito/IMGND.jpg'"
+                    class="d-flex  rounded me-2 position-relative w-50" alt="...">
+            </div>
+            <div class=" d-flex justify-content-center">
+                <b></b>
+            </div>
+            <div class=" d-flex justify-content-center">
+                <p></p>
+
+            </div>
+
+
+
+
+
+            <button type="button" class="btn btn-secondary btn-sm position-relative w-100" data-bs-dismiss="toast">
+                <div class="spinner-border spinner-border-sm" role="status">
+
+                </div> Cerrar
+            </button>
+
+        </div>
+    </div>
+-->
 
 
 
@@ -229,10 +416,16 @@
 
 
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <!-- <script type="module" src="agrega3.js"></script> -->
+
+    <!-- <script type="module" src="agrega.js"></script> -->
+    <script type="module" src="logica.js"></script>
+
+
 
 </body>
 
