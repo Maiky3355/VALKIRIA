@@ -59,7 +59,7 @@
  {"Artículo":59, "Descripción":"MORTIMER ESPONJA CUADRICULADA", "Venta":"950", "Descuento":"0", "Inventario":"4", "Categoria":"LIMPIEZA", "BAlterna":"7793253038106", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":60, "Descripción":"VILEDA ESPONJA MULTIUSO CON FIBRA", "Venta":"650", "Descuento":"0", "Inventario":"4", "Categoria":"LIMPIEZA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":61, "Descripción":"CALIPSO PROTECTOR DIARIO X50U NORMAL SP", "Venta":"1800", "Descuento":"0", "Inventario":"3", "Categoria":"PROTECCION INTIMA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
- {"Artículo":62, "Descripción":"BABYSEC PA\u00d1ALES DE 30 A 48U  ULTRASOFT HIP", "Venta":"8300", "Descuento":"0", "Inventario":"6", "Categoria":"PA\u00d1ALES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":62, "Descripción":"BABYSEC PA\u00d1ALES DE 30 A 48U ULTRASOFT HIP", "Venta":"8300", "Descuento":"0,05", "Inventario":"6", "Categoria":"PA\u00d1ALES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":63, "Descripción":"ESPADOL JABON TOCADOR X80-90G ORIGINAL", "Venta":"1399", "Descuento":"0", "Inventario":"1", "Categoria":"JABONES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":64, "Descripción":"PLUSBELLE JABON TOCADOR X120G VARIOS", "Venta":"750", "Descuento":"0", "Inventario":"49", "Categoria":"JABONES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":65, "Descripción":"LUX JABON TOCADOR X120-125G VARIOS", "Venta":"799", "Descuento":"0", "Inventario":"30", "Categoria":"JABONES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
@@ -99,4 +99,9 @@
  {"Artículo":99, "Descripción":"KEVIN DESODORANTE H X250ML VARIOS", "Venta":"3900", "Descuento":"0", "Inventario":"6", "Categoria":"DESODORANTES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":100, "Descripción":"REXONA DEO ROLL-ON ANTITRANSPIRANTE W X50ML VARIOS", "Venta":"2100", "Descuento":"0", "Inventario":"4", "Categoria":"DESODORANTES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":101, "Descripción":"REXONA DEO ROLL-ON ANTITRANSPIRANTE H X50ML VARIOS", "Venta":"2100", "Descuento":"0", "Inventario":"1", "Categoria":"DESODORANTES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
- {"Artículo":102, "Descripción":"VERITAS JABON X120G BEBE GLICERINA", "Venta":"1150", "Descuento":"0", "Inventario":"2", "Categoria":"JABONES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"}]
+ {"Artículo":102, "Descripción":"VERITAS JABON X120G BEBE GLICERINA", "Venta":"1150", "Descuento":"0", "Inventario":"2", "Categoria":"JABONES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":103, "Descripción":"REXONA DESODORANTE ANTITRANSPIRANTE W X150ML CLINICAL VARIOS", "Venta":"4200", "Descuento":"0", "Inventario":"3", "Categoria":"DESODORANTES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":104, "Descripción":"REXONA DESODORANTE ANTITRANSPIRANTE H X150ML CLINICAL VARIOS", "Venta":"4200", "Descuento":"0", "Inventario":"2", "Categoria":"DESODORANTES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":105, "Descripción":"OB TAMPONES X8U SIEMPRE LIBRE VARIOS", "Venta":"3190", "Descuento":"0", "Inventario":"2", "Categoria":"PROTECCION INTIMA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":106, "Descripción":"NOSOTRAS TAMPONES X8U VARIOS", "Venta":"2499", "Descuento":"0", "Inventario":"3", "Categoria":"PROTECCION INTIMA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":107, "Descripción":"NIVEA DESODORANTE ANTITRANSPIRANTE W X150ML VARIOS", "Venta":"2890", "Descuento":"0", "Inventario":"2", "Categoria":"DESODORANTES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"}]
