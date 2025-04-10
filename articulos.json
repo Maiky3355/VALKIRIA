@@ -200,4 +200,13 @@
  {"Artículo":200, "Descripción":"BABYSEC PA\u00d1ALES X20U PREMIUM RECIEN NACIDO HIP", "Venta":"11500", "Descuento":"0", "Inventario":"0", "Categoria":"PA\u00d1ALES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":201, "Descripción":"ALA JABON LIQUIDO X450ML CAMELLITO ROPA FINA DP MATIC", "Venta":"2500", "Descuento":"0", "Inventario":"1", "Categoria":"JABONES ROPA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
  {"Artículo":202, "Descripción":"ACE JABON LIQUIDO X800ML ROPA CLASICO", "Venta":"2890", "Descuento":"0,1", "Inventario":"4", "Categoria":"JABONES ROPA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
- {"Artículo":203, "Descripción":"COMFORT SUAVIZANTE X900ML CLASICO", "Venta":"3100", "Descuento":"0", "Inventario":"3", "Categoria":"JABONES ROPA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"}]
+ {"Artículo":203, "Descripción":"COMFORT SUAVIZANTE X900ML CLASICO", "Venta":"3100", "Descuento":"0", "Inventario":"3", "Categoria":"JABONES ROPA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":204, "Descripción":"ALA DETERGENTE X300ML CONCENTRADO LIMON", "Venta":"1299,99", "Descuento":"0", "Inventario":"2", "Categoria":"LIMPIEZA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":205, "Descripción":"ALA DETERGENTE X500ML CONCENTRADO LIMON", "Venta":"2300", "Descuento":"0", "Inventario":"1", "Categoria":"LIMPIEZA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":206, "Descripción":"LUX JABON TOCADOR 3X120G VARIOS", "Venta":"2399", "Descuento":"0", "Inventario":"0", "Categoria":"JABONES", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":207, "Descripción":"SUAVE FEDERAL SUAVIZANTE X900ML VARIOS", "Venta":"2199", "Descuento":"0", "Inventario":"5", "Categoria":"JABONES ROPA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":208, "Descripción":"GRANBY JABON LIQUIDO X800ML ROPA DP", "Venta":"1900", "Descuento":"0", "Inventario":"1", "Categoria":"JABONES ROPA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":209, "Descripción":"GIGANTE QUITAMANCHAS BARRA X75G ROPA", "Venta":"1500", "Descuento":"0", "Inventario":"3", "Categoria":"JABONES ROPA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":210, "Descripción":"CAREFREE PROTECTOR DIARIO X20U ORIGINAL SP", "Venta":"2500", "Descuento":"0", "Inventario":"2", "Categoria":"PROTECCION INTIMA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":211, "Descripción":"CAREFREE PROTECTOR DIARIO X20U LARGOS CP", "Venta":"3100", "Descuento":"0", "Inventario":"1", "Categoria":"PROTECCION INTIMA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"},
+ {"Artículo":212, "Descripción":"CAREFREE PROTECTOR DIARIO X20U COMPACT SP", "Venta":"1890", "Descuento":"0", "Inventario":"2", "Categoria":"PROTECCION INTIMA", "BAlterna":"", "Marca":"VARIAS", "DOLAR":"1"}]
