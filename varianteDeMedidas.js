@@ -9,7 +9,7 @@ let i=0;
     const categoriasValidas = ["CABELLO", "PUNTERAS"];
 
     // Verificamos si la categoría NO está en la lista de categorías válidas
-    if (!categoriasValidas.includes(datos.Categoria) || datos.F18=="1") {
+    if (!categoriasValidas.includes(datos.Categoria) || datos.VarianteP=="1") {
         // Si existen los elementos, los eliminamos
         if (selectElement4) eliminarDelDom.removeElements([selectElement4]);
         if (selectElement5) eliminarDelDom.removeElements([selectElement5]);
@@ -49,9 +49,9 @@ let i=0;
       let nuevasOpciones = ''; // Inicializamos la cadena de opciones vacía
 
       // Verificamos que datos.BAlterna exista y sea un string no vacío
-      if (typeof datos.F18 === 'string' && datos.F18.trim().length > 0) {
+      if (typeof datos.VarianteP === 'string' && datos.VarianteP.trim().length > 0) {
           // Dividimos el string por la coma para obtener un array de opciones
-          const opcionesArray = datos.F18.split(',');
+          const opcionesArray = datos.VarianteP.split(',');
 
           // Iteramos sobre el array de opciones
           opcionesArray.forEach(opcion => {
@@ -82,9 +82,9 @@ let i=0;
         let nuevasOpciones2 = ''; // Inicializamos la cadena de opciones vacía
 
         // Verificamos que datos.BAlterna exista y sea un string no vacío
-        if (typeof datos.BAlterna === 'string' && datos.BAlterna.trim().length > 0) {
+        if (typeof datos.VarianteS === 'string' && datos.VarianteS.trim().length > 0) {
             // Dividimos el string por la coma para obtener un array de opciones
-            const opcionesArray = datos.BAlterna.split(',');
+            const opcionesArray = datos.VarianteS.split(',');
 
             // Iteramos sobre el array de opciones
             opcionesArray.forEach(opcion => {
