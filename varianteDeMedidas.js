@@ -71,7 +71,7 @@ let i=0;
           // Opcional: ¿Qué hacer si datos.BAlterna está vacío o no existe?
           // Podrías poner una opción por defecto o dejarlo vacío.
           nuevasOpciones = '<option value="">-- No hay variantes --</option>';
-          console.warn(`datos.BAlterna está vacío o no definido para el artículo: ${datos.Artículo}`);
+         // console.warn(`datos.BAlterna está vacío o no definido para el artículo: ${datos.Artículo}`);
       }
 
       // Asignar las opciones generadas al select tVariante
@@ -108,7 +108,7 @@ let i=0;
            //SI NO HAY VARIANTES ELIMINAMOS EL SELECT
             if (selectElement5) eliminarDelDom.removeElements([selectElement5]);
 
-            console.warn(`datos.BAlterna está vacío o no definido para el artículo: ${datos.Artículo}`);
+           // console.warn(`datos.BAlterna está vacío o no definido para el artículo: ${datos.Artículo}`);
         }
 
         // Asignar las opciones generadas al select tVariante

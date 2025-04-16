@@ -485,6 +485,11 @@ function escucharBotones() {
       if (medidas == null & varied == null) {
         agregarOModificarItem(da2, (parseInt(da2)), tit, pre, dol, unidades, desc);
       } else {
+    
+        if (varied==null){
+          
+          varied2="";
+        }
         //modificamos el id y agregamos descropcion diferente... agregamos la medida y 9990 al principio y la variedad al final
         agregarOModificarItem(medidas + 9990 + da2 + varied, (parseInt(medidas + 9990 + da2 + varied)), `${tit}  ${textMedidas} ${varied2}`, pre, dol, unidades, desc);
       }
