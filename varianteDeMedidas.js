@@ -149,7 +149,8 @@ export function cambiarVariantes() {
 
             const selectElement77 = document.getElementById("var" + id2); // Obtener el elemento select por su id
             if (!selectElement77) {
-                console.error(`El elemento select variante con ID "var${id2}" no existe.`);
+
+               // console.error(`El elemento select variante con ID "var${id2}" no existe.`);
                 return;
             }
 
