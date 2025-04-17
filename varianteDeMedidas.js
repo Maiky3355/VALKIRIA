@@ -9,7 +9,7 @@ let i=0;
     const categoriasValidas = ["CABELLO", "PUNTERAS"];
 
     // Verificamos si la categoría NO está en la lista de categorías válidas
-    if (!categoriasValidas.includes(datos.Categoria) || datos.VarianteP=="1") {
+    if (!categoriasValidas.includes(datos.Categoria) || datos.VarianteP=="") {
         // Si existen los elementos, los eliminamos
         if (selectElement4) eliminarDelDom.removeElements([selectElement4]);
         if (selectElement5) eliminarDelDom.removeElements([selectElement5]);
