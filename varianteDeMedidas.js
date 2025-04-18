@@ -6,10 +6,13 @@ export function AgregaVariantes(datos, template2) {
     let selectElement5 = template2.querySelector('.tVariante');
     let selectElement4 = template2.querySelector('.tMedida');
 let i=0;
-    const categoriasValidas = ["CABELLO", "PUNTERAS"];
+  //  const categoriasValidas = ["CABELLO", "PUNTERAS"];
 
     // Verificamos si la categoría NO está en la lista de categorías válidas
-    if (!categoriasValidas.includes(datos.Categoria) || datos.VarianteP=="") {
+    
+    if (datos.VarianteP=="") {
+     
+    //if (!categoriasValidas.includes(datos.Categoria) || datos.VarianteP=="") {
         // Si existen los elementos, los eliminamos
         if (selectElement4) eliminarDelDom.removeElements([selectElement4]);
         if (selectElement5) eliminarDelDom.removeElements([selectElement5]);
