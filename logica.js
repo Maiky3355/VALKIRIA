@@ -118,13 +118,16 @@ if (h5Element) {
     precioCatalogo2 = new Intl.NumberFormat('es-Mx', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(precioCatalogo2);
 
     //mostramos el precio del producto y el descuento tachado
-    template2.querySelector("small").innerHTML = "<del>$" + precioCatalogo + "</del>" + " $" + precioCatalogo2;
+    template2.querySelector("small").innerHTML = "<del>$" + precioCatalogo + "</del>";// + " $" + precioCatalogo2;
+    template2.querySelector("h7").textContent = " $" + precioCatalogo2;
+     
   } else {
     var precioCatalogo = (datos.Venta.replace(/,/g, ".") * datos.DOLAR);
     precioCatalogo = new Intl.NumberFormat('es-Mx', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(precioCatalogo);
 
     //mostramos el precio del producto
     template2.querySelector("small").textContent = "$" + precioCatalogo;
+    template2.querySelector("h7").textContent = "";
   }
 
   //seleccionamos el boton y le asignamos el id que corresponde
