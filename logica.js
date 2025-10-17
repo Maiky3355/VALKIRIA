@@ -342,7 +342,7 @@ document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las c
 
 
 //Ponemos a escuchar botones de productos
-escucharBotones();
+
 descu.porDeDescuento();
 
 
