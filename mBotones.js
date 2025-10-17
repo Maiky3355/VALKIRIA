@@ -30,6 +30,7 @@ export function mostrarBotones() {
             observer.observe(boton);
         });
     });
+    escucharBotones();
 }
 
 

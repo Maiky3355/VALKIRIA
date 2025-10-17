@@ -213,6 +213,7 @@ categoriasUnicas.forEach(categoria => {
       }
 
       mBotones.mostrarBotones();
+      escucharBotones();
     });
     let clone = document.importNode(template, true);
     fragmento.appendChild(clone);
@@ -326,6 +327,7 @@ datos.forEach(datos => {
   }
 
   mBotones.mostrarBotones();
+  escucharBotones();
 });
 
 template.querySelector("H3").textContent = 'Precios solo en efectivo.';
