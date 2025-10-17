@@ -20,7 +20,7 @@ export function mostrarBotones() {
                     setTimeout(function () {
                         entrada.target.style.opacity = '1';
                         entrada.target.style.animation = 'aparecerDesdeAbajo 0.5s ease-in-out forwards';
-                    }, 400); // Retraso de 2 segundos (2000 milisegundos)
+                    }, 300); // Retraso de 2 segundos (2000 milisegundos)
                     observer.unobserve(entrada.target);
                 }
             });

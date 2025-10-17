@@ -214,7 +214,6 @@ categoriasUnicas.forEach(categoria => {
 
       mBotones.mostrarBotones();
 
-      escucharBotones();
       
     });
     let clone = document.importNode(template, true);
@@ -329,7 +328,7 @@ datos.forEach(datos => {
   }
 
   mBotones.mostrarBotones();
-  escucharBotones();
+
 });
 
 template.querySelector("H3").textContent = 'Precios solo en efectivo.';
@@ -342,7 +341,7 @@ document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las c
 
 
 //Ponemos a escuchar botones de productos
-
+escucharBotones();
 descu.porDeDescuento();
 
 
@@ -808,16 +807,16 @@ function filtrarConBusqueda() {
     document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las cards
     mBotones.mostrarBotones();
 
-    escucharBotones();
+
     var a = true;
 
     descu.porDeDescuento();
 
     varianteDeMedidas.cambiarVariantes()
 
-
+escucharBotones();
     subirScroll.subir();
-
+    
   };
   //PONEMOS LOS EVENTOS DEL BUSCADOR 
 
