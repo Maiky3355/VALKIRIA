@@ -213,7 +213,9 @@ categoriasUnicas.forEach(categoria => {
       }
 
       mBotones.mostrarBotones();
+
       escucharBotones();
+      
     });
     let clone = document.importNode(template, true);
     fragmento.appendChild(clone);
