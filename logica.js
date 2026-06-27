@@ -131,7 +131,9 @@ if (h5Element) {
   }
 
   //seleccionamos el boton y le asignamos el id que corresponde
-  template2.querySelector("button").setAttribute("id", "idbot" + (datos.Artículo));
+  const addButton = template2.querySelector("button");
+  addButton.setAttribute("id", "idbot" + (datos.Artículo));
+  console.log("Botón de agregar al carrito creado con ID:", addButton.id); // Agregado para depuración
 
   //hacemos un clon y lo subimos al fragmento correspondiente para poder repetirlo. clone 1 contenedor . clone 2 etiquetas restantes
 
@@ -139,7 +141,6 @@ if (h5Element) {
   fragmento2.appendChild(clone2);
   return fragmento2
 };
-
 
 
 
@@ -233,9 +234,10 @@ categoriasUnicas.forEach(categoria => {
     boton.style.fontWeight = 'bold';
 
 
-    //PONEMOS A ESCUCHAR LOS BOTONES NUEVAMENTE
+    // Eliminamos la llamada redundante a escucharBotones() aquí
+    // escucharBotones();
 
-    escucharBotones();
+
     var a = true;
 
     descu.porDeDescuento();
@@ -341,7 +343,7 @@ document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las c
 
 
 //Ponemos a escuchar botones de productos
-escucharBotones();
+escucharBotones(); // Esta es la única llamada a escucharBotones que debe existir.
 descu.porDeDescuento();
 
 
@@ -357,170 +359,143 @@ descu.porDeDescuento();
 //esta es la funcion que agrega los datos a itemCarrito
 function escucharBotones() {
 
-  const btns = document.querySelectorAll('button[id^=idbot]');
-  document.querySelectorAll('button[id^=idbot]').forEach(button => {
-    button.removeEventListener('click', Event);
-  })
-  btns.forEach(btn => {
-    btn.addEventListener('click', event => {
+  // Adjuntamos un único event listener al documento entero para delegación de eventos.
+  // Esto garantiza que el listener esté siempre activo, sin importar si los elementos
+  // del DOM son agregados o eliminados dinámicamente.
+  document.addEventListener('click', event => {
+    console.log("Click detectado en el documento."); // Log 1: Se dispara en cada clic en cualquier parte del documento
+    // Usamos event.target.closest() para verificar si el clic fue en un botón
+    // con un ID que empieza por 'idbot'. Esto funciona para botones dinámicos.
+      const btn = event.target.closest('button[id^=idbot]');
+
+      if (btn) {
+      console.log("Botón de agregar al carrito clicado:", btn.id); // Log 2: Solo se dispara si se hizo clic en un botón de carrito
       event.stopImmediatePropagation(); // Detiene la propagación del evento de forma inmediata
-      var da = event.target.id;
-      var regex = /(\d+)/g;
+
+      var da = btn.id; // Obtenemos el ID del botón que fue clicado
+      var regex = /(\d+)/g; // Expresión regular corregida
       var da2 = (da.match(regex));
 
-      let selectElement = document.getElementById('idbot' + da2); // Obtener el elemento select por su id
+      // Asegúrate de que da2 tenga al menos un elemento antes de acceder a da2[0]
+      if (!da2 || da2.length === 0) {
+        console.error("Error: No se pudo extraer el ID numérico del botón.", da);
+        return; // Salir de la función si no hay ID numérico
+      }
+      let productId = da2[0]; // Usar el primer elemento del array
+      console.log("ID del artículo (productId):", productId); // Log 3
 
-      unidades = Number(selectElement.value); // Obtener el valor seleccionado del elemento select
+      let selectElement = document.getElementById('idbot' + productId); // Obtener el elemento select por su id
 
-      let selectElement77 = document.getElementById('med' + da2); // Obtener el elemento select por su id
-      if (selectElement77 != null) {
-        var medidas = selectElement77.value; // Obtener el valor seleccionado del elemento select
-        if (selectElement77 && typeof selectElement77.selectedIndex !== 'undefined') {
+      let unidades = 1; // Valor por defecto
+        if (selectElement) {
+          unidades = Number(selectElement.value);
+        console.log("Unidades seleccionadas:", unidades); // Log 4
+          } else {
+        console.log("Error: selectElement (cantidad) no encontrado para id:", productId); // Log 5
+          }
+      
 
-          // Verifica si realmente hay una opción seleccionada (selectedIndex será -1 si no hay nada seleccionado)
+      let selectElement77 = document.getElementById('med' + productId); // Obtener el elemento select por su id
+        var medidas = null;
+        var textMedidas = "";
+        if (selectElement77 != null) {
+        medidas = selectElement77.value; // Obtener el valor seleccionado del elemento select
           if (selectElement77.selectedIndex >= 0) {
-              // Obtén el elemento <option> seleccionado usando el índice
               const selectedOptionElement = selectElement77.options[selectElement77.selectedIndex];
-      
-              // Obtén el texto visible de esa opción
-              var medidas2 = selectedOptionElement.textContent; // O también puedes usar .innerText
-      
-              console.log("Texto de la opción seleccionada:",medidas2);
-              console.log("Valor de la opción seleccionada:",selectElement77.value); // Para comparar
-      
-          } else {
-              // No hay ninguna opción seleccionada
-              var medidas2 = ""; // O null, o un valor por defecto
-              console.log("Ninguna opción seleccionada.");
-          }
-      
+              textMedidas = selectedOptionElement.textContent;
+          console.log("Medidas seleccionadas:", medidas, "Texto:", textMedidas); // Log 6
       } else {
-          console.error("selectElement77 no es un elemento select válido o no existe.");
-          var medidas2 = ""; // Manejo de error
+          console.log("Ninguna opción de medida seleccionada para id:", productId); // Log 7
       }
-      var textMedidas =medidas2;
-        // switch (medidas) {
-        //   case '1':
-        //     console.log('Has seleccionado la opción 1');
-        //     // Aquí puedes realizar acciones específicas para la opción 1
-        //     var textMedidas = "SH-";
-        //     break;
-        //   case '2':
-        //     console.log('Has seleccionado la opción 2');
-        //     // Acciones para la opción 2
-        //     var textMedidas = "AC-";
-        //     break;
-        //   // case '3':
-        //   //   // ...
-        //   //   var textMedidas = "RM-";
-        //   //   break;
-        //   // case '4':
-        //   //   // ...
-        //   //   var textMedidas = "RS-";
-        //   //   break;
-        //   default:
-        //     console.log('Opción no válida');
-        //     break;
-        // }
-
-      }
-
-      let selectElement7 = document.getElementById('var' + da2); // Obtener el elemento select por su id
-      if (selectElement7 != null) {
-        var varied = selectElement7.value; // Obtener el valor seleccionado del elemento select
-        const selectedOptionElement2 = selectElement7.options[selectElement7.selectedIndex];
-      
-        // Obtén el texto visible de esa opción
-        var varied2 = selectedOptionElement2.textContent; // O también puedes usar .innerText
-
-      }
-      //buscamos los datos del boton precionado
-      var tit = buscarDatos.buscarId(parseInt(da2));
-      var pre = buscarDatos.buscarIdPrecio(parseInt(da2));
-      var dol = buscarDatos.buscarIdDol(parseInt(da2));
-      var stock = buscarDatos.buscarStock(parseInt(da2));
-      var desc = buscarDatos.buscarDescuento(parseInt(da2));
-
-      let agregarOModificarItem = (da2, Artículo, Descripción, Venta, DOLAR, Unidades, Descuento) => {
-        //vemos si esta por el id
-        let siEstaId = itemCarrito.find(artic => artic.Artículo === (parseInt(da2)));
-        //vemos si esta con la misma descripcion
-
-        if (siEstaId) {
-
-          if ((siEstaId.Unidades + unidades) <= stock) {
-
-            siEstaId.Unidades += unidades;
-            localStor.guardarEnLocalStorage(itemCarrito);
-            agregar(tit, da2);
           } else {
-            //MOSTRAMOS ALERTAS DE NO HAY STOCK SUFICIENTE
-            let suceso = "NO HAY STOCK SUFICIENTE";
-            let tipoAlert = "alert-danger";
-            alertas.alertAgrego(Descripción, suceso, tipoAlert);
-            return;
-          }
+        console.log("Elemento de medida (selectElement77) no encontrado para id:", productId); // Log 8
+        }
 
+      let selectElement7 = document.getElementById('var' + productId); // Obtener el elemento select por su id
+        var varied = null;
+        var varied2 = "";
+        if (selectElement7 != null) {
+        varied = selectElement7.value; // Obtener el valor seleccionado del elemento select
+          if (selectElement7.selectedIndex >= 0) {
+            const selectedOptionElement2 = selectElement7.options[selectElement7.selectedIndex];
+            varied2 = selectedOptionElement2.textContent;
+            console.log("Variedad seleccionada:", varied, "Texto:", varied2); // Log 9
         } else {
-          if ((Unidades) <= stock) {
-            if (Descuento != 0) {
-              let ventaCD = ((Venta) * (1 - (Number(Descuento) / 100)));
-
-              itemCarrito.push({ Artículo, Descripción, Venta: ventaCD.toString(), DOLAR, Unidades });
-              localStor.guardarEnLocalStorage(itemCarrito);
-              agregar(tit, da2);
-
+          console.log("Ninguna opción de variedad seleccionada para id:", productId); // Log 10
+          }
             } else {
-              itemCarrito.push({ Artículo, Descripción, Venta, DOLAR, Unidades });
-              localStor.guardarEnLocalStorage(itemCarrito);
-              agregar(tit, da2);
-              console.log(Venta)
-              console.log(typeof Venta);
+        console.log("Elemento de variedad (selectElement7) no encontrado para id:", productId); // Log 11
+        }
 
-            }
+        //buscamos los datos del boton precionado
+      var tit = buscarDatos.buscarId(parseInt(productId));
+      var pre = buscarDatos.buscarIdPrecio(parseInt(productId));
+      var dol = buscarDatos.buscarIdDol(parseInt(productId));
+      var stock = buscarDatos.buscarStock(parseInt(productId));
+      var desc = buscarDatos.buscarDescuento(parseInt(productId));
+      console.log("Datos del producto:", { tit, pre, dol, stock, desc }); // Log 12
+
+        let agregarOModificarItem = (articuloId, Artículo, Descripción, Venta, DOLAR, Unidades, Descuento) => {
+        console.log("Llamando a agregarOModificarItem con:", { articuloId, Artículo, Descripción, Venta, DOLAR, Unidades, Descuento }); // Log 13
+          let siEstaId = itemCarrito.find(artic => artic.Artículo === (parseInt(articuloId)));
+
+          if (siEstaId) {
+          console.log("Producto ya en carrito:", siEstaId); // Log 14
+            if ((siEstaId.Unidades + Unidades) <= stock) {
+              siEstaId.Unidades += Unidades;
+              localStor.guardarEnLocalStorage(itemCarrito);
+            agregar(Descripción, articuloId); // Usar Descripción en lugar de tit para la alerta
+            console.log("Unidades actualizadas y guardadas."); // Log 15
           } else {
-            //MOSTRAMOS ALERTAS DE NO HAY STOCK SUFICIENTE
             let suceso = "NO HAY STOCK SUFICIENTE";
             let tipoAlert = "alert-danger";
             alertas.alertAgrego(Descripción, suceso, tipoAlert);
+            console.log("No hay stock suficiente para actualizar."); // Log 16
             return;
           }
-
-        }
-      };
-      if (medidas == null & varied == null) {
-        agregarOModificarItem(da2, (parseInt(da2)), tit, pre, dol, unidades, desc);
       } else {
-    
-        if (varied==null){
-          
-          varied2="";
+          console.log("Producto nuevo para carrito."); // Log 17
+            if ((Unidades) <= stock) {
+              if (Descuento != 0) {
+                let ventaCD = ((Venta) * (1 - (Number(Descuento) / 100)));
+                itemCarrito.push({ Artículo, Descripción, Venta: ventaCD.toString(), DOLAR, Unidades });
+  localStor.guardarEnLocalStorage(itemCarrito);
+              agregar(Descripción, articuloId); // Usar Descripción en lugar de tit para la alerta
+              console.log("Producto con descuento agregado y guardado."); // Log 18
+
+              } else {
+                itemCarrito.push({ Artículo, Descripción, Venta, DOLAR, Unidades });
+                localStor.guardarEnLocalStorage(itemCarrito);
+              agregar(Descripción, articuloId); // Usar Descripción en lugar de tit para la alerta
+              console.log("Producto sin descuento agregado y guardado."); // Log 19
+              }
+            } else {
+              let suceso = "NO HAY STOCK SUFICIENTE";
+        let tipoAlert = "alert-danger";
+              alertas.alertAgrego(Descripción, suceso, tipoAlert);
+            console.log("No hay stock suficiente para agregar nuevo producto."); // Log 20
+              return;
+            }
+          }
+};
+
+        if (medidas == null && varied == null) {
+        agregarOModificarItem(productId, (parseInt(productId)), tit, pre, dol, unidades, desc);
+        } else {
+          if (varied == null) {
+            varied2 = "";
+          }
+        let articuloIdModificado = medidas + '9990' + productId + varied; // Concatenar como string
+          agregarOModificarItem(articuloIdModificado, (parseInt(articuloIdModificado)), `${tit}  ${textMedidas} ${varied2}`, pre, dol, unidades, desc);
         }
-        //modificamos el id y agregamos descropcion diferente... agregamos la medida y 9990 al principio y la variedad al final
-        agregarOModificarItem(medidas + 9990 + da2 + varied, (parseInt(medidas + 9990 + da2 + varied)), `${tit}  ${textMedidas} ${varied2}`, pre, dol, unidades, desc);
+
+      console.log("Estado actual de itemCarrito:", itemCarrito); // Log 21
+
+        EliminarV();
+        total();
       }
-
-
-      console.log(itemCarrito);
-
-      EliminarV();
-      total();
     });
-  });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
 function EliminarV() {
 
   //SELECCIONAMOS LAS LI DEL CANVAS PARA HACERLAS ESCUCHAR
@@ -549,7 +524,7 @@ function EliminarV() {
         alertas.alertAgrego(prodAElimin, suceso, tipoAlert);
 
 
-      }
+    }
 
 
     })
@@ -567,7 +542,7 @@ function EliminarV() {
           actualizarCarrito();
           actualizarEnlaceWhatsApp();
           return siEsta.Descripción
-        }
+  }
         actualizarCarrito();
 
       } else {
@@ -597,7 +572,7 @@ function EliminarV() {
       return siEsta.Descripción
     }
     actualizarCarrito();
-  };
+};
 }
 
 
@@ -772,7 +747,7 @@ filtrarConBusqueda()
 //usamos el siguiente codigo para buscar productos
 function filtrarConBusqueda() {
 
-  //buscador 
+  //buscador
   //VEMOS EL CONTENIDO DEL FORMULARIO BUSCAR
   const formulario = document.querySelector('#formulario');
 
@@ -814,11 +789,12 @@ function filtrarConBusqueda() {
 
     varianteDeMedidas.cambiarVariantes()
 
-escucharBotones();
+// Eliminamos la llamada redundante a escucharBotones() aquí
+// escucharBotones();
     subirScroll.subir();
-    
+
   };
-  //PONEMOS LOS EVENTOS DEL BUSCADOR 
+  //PONEMOS LOS EVENTOS DEL BUSCADOR
 
 
   formulario.addEventListener('input', filtrar);
@@ -896,7 +872,7 @@ function actualizarCarrito() {
 
 
 
-    //AGREGAMOS LAS UNIDADES A MOSTRAR EN GLOBO DE CARRITO    
+    //AGREGAMOS LAS UNIDADES A MOSTRAR EN GLOBO DE CARRITO
 
     cantCarritoLet += producto.Unidades;
 
@@ -935,7 +911,7 @@ descu.porDeDescuento();
 
 
 
-//si lo usamos, este codigo iria en mostrarCatalogo 
+//si lo usamos, este codigo iria en mostrarCatalogo
 //llamamos a la funcion de control de imagen
 //let im= mostrarImagen(datos, contenedorId);
 //template2.querySelector("img").setAttribute("src", (im));
@@ -990,7 +966,6 @@ function borrarCarritoCompleto() {
 
 
   BCarritoComp.appendChild(btnBorrarCarrito)
-
   const btbc = document.getElementById('btbc');
 
 
@@ -1028,7 +1003,6 @@ function borrarCarritoCompleto() {
 
 //propagandaAlAzar.propagandaAlAzar()
 // obtenerURL()
-
 const fondo = document.getElementById('fondo');
 const fondo2 = document.getElementById('fondo2');
 // Función para cambiar el z-index después de 4 segundos
