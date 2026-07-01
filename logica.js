@@ -109,26 +109,58 @@ if (h5Element) {
   template2.querySelector(".cantidad").setAttribute("id", "idbot" + (datos.Artículo));
   template2.querySelector(".cantidad").setAttribute("max", (datos.Inventario));
   if (datos.Descuento != 0) {
-    // Formatear precioCatalogo con formato numérico y limitar a 2 decimales
-    var precioCatalogo = (datos.Venta.replace(/,/g, ".") * datos.DOLAR);
-    precioCatalogo = new Intl.NumberFormat('es-Mx', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(precioCatalogo);
 
-    //los valores vienen con "," y hay q pasarlos a puntos
-    var precioCatalogo2 = (datos.Venta.replace(/,/g, ".") * datos.DOLAR) * (1 - (Number((datos.Descuento).replace(/,/g, "."))));
-    precioCatalogo2 = new Intl.NumberFormat('es-Mx', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(precioCatalogo2);
+    // Precio original
+    let precioCatalogo = (Number(datos.Venta.replace(/,/g, ".")) * Number(datos.DOLAR));
 
-    //mostramos el precio del producto y el descuento tachado
-    template2.querySelector("small").innerHTML = "<del>$" + precioCatalogo + "</del>";// + " $" + precioCatalogo2;
-    template2.querySelector("h7").textContent = " $" + precioCatalogo2;
-     
-  } else {
-    var precioCatalogo = (datos.Venta.replace(/,/g, ".") * datos.DOLAR);
-    precioCatalogo = new Intl.NumberFormat('es-Mx', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(precioCatalogo);
+    // Precio con descuento
+    let precioCatalogo2 = precioCatalogo * (1 - Number(datos.Descuento.replace(/,/g, ".")));
 
-    //mostramos el precio del producto
-    template2.querySelector("small").textContent = "$" + precioCatalogo;
-    template2.querySelector("h7").textContent = "";
-  }
+    // Precio sin impuestos nacionales (IVA 21%)
+    let precioCatalogo3 = precioCatalogo2 / 1.21;
+
+    // Formatear recién al final
+    precioCatalogo = new Intl.NumberFormat('es-MX', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(precioCatalogo);
+
+    precioCatalogo2 = new Intl.NumberFormat('es-MX', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(precioCatalogo2);
+
+    precioCatalogo3 = new Intl.NumberFormat('es-MX', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(precioCatalogo3);
+
+    template2.querySelector("small").innerHTML = "<del>$" + precioCatalogo + "</del>";
+    template2.querySelector("h7").textContent = "$" + precioCatalogo2;
+    template2.querySelector("h11").textContent = "Precio sin imp. nacionales: $" + precioCatalogo3;
+
+} else {
+
+    // Precio final
+    let precioCatalogo = (Number(datos.Venta.replace(/,/g, ".")) * Number(datos.DOLAR));
+
+    // Precio sin impuestos nacionales
+    let precioCatalogo3 = precioCatalogo / 1.21;
+
+    precioCatalogo = new Intl.NumberFormat('es-MX', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(precioCatalogo);
+
+    precioCatalogo3 = new Intl.NumberFormat('es-MX', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(precioCatalogo3);
+
+    template2.querySelector("small").textContent ="";
+    template2.querySelector("h7").textContent =  "$" + precioCatalogo;
+    template2.querySelector("h11").textContent = "Precio sin imp. nacionales: $" + precioCatalogo3;
+}
 
   //seleccionamos el boton y le asignamos el id que corresponde
   const addButton = template2.querySelector("button");
@@ -161,100 +193,100 @@ var FILTROS = "";
 //creamos una variable para las unidades a ser agregadas al itemCarrito
 let unidades = 1;
 
-// Obtener el contenedor del menú desplegable para buscar productos por categoria
-const dropdownContainer = document.querySelector(".porCategoria");
-const dropdownMenu = dropdownContainer.querySelector(".porCategoriaUl");
-const nombreDesplegable = dropdownContainer.querySelector(".nombreDesplegable");
+// // Obtener el contenedor del menú desplegable para buscar productos por categoria
+// const dropdownContainer = document.querySelector(".porCategoria");
+// const dropdownMenu = dropdownContainer.querySelector(".porCategoriaUl");
+// const nombreDesplegable = dropdownContainer.querySelector(".nombreDesplegable");
 
-// Crear un conjunto (Set) para almacenar las categorías únicas
-const categoriasUnicas = new Set();
+// // Crear un conjunto (Set) para almacenar las categorías únicas
+// const categoriasUnicas = new Set();
 
-// Iterar sobre el array de datos y agregar cada categoría al conjunto
-datos.forEach(objeto => {
-  //si las categorias tienen productos con stock la agregamos al menu desplegable
-  categoriasUnicas.add("VER TODOS");
-  categoriasUnicas.add("CON DESCUENTOS");
- 
-
-  if (objeto.Inventario >= 1) {
-    categoriasUnicas.add(objeto.Categoria);
-
-  }
-});
+// // Iterar sobre el array de datos y agregar cada categoría al conjunto
+// datos.forEach(objeto => {
+//   //si las categorias tienen productos con stock la agregamos al menu desplegable
+//   categoriasUnicas.add("VER TODOS");
+//   categoriasUnicas.add("CON DESCUENTOS");
 
 
-// Crear los elementos de lista dinámicamente utilizando las categorías únicas
-categoriasUnicas.forEach(categoria => {
-  const lil = document.createElement("li");
-  const boton = document.createElement("button");
-  boton.textContent = categoria;
-  boton.className = "dropdown-item";
-  boton.type = "button";
-  // Agregar evento de clic al botón
-  boton.addEventListener("click", () => {
+//   if (objeto.Inventario >= 1) {
+//     categoriasUnicas.add(objeto.Categoria);
+
+//   }
+// });
+
+
+// // Crear los elementos de lista dinámicamente utilizando las categorías únicas
+// categoriasUnicas.forEach(categoria => {
+//   const lil = document.createElement("li");
+//   const boton = document.createElement("button");
+//   boton.textContent = categoria;
+//   boton.className = "dropdown-item";
+//   boton.type = "button";
+//   // Agregar evento de clic al botón
+//   boton.addEventListener("click", () => {
   
-    FILTROS = boton.textContent;
+//     FILTROS = boton.textContent;
 
-    //eliminamos el contenido del cATALOGO PARA MOSTRAR EL CONTENIDO FILTRADO
-    const element = document.querySelector(".esteSi");
-    element.parentElement.remove();
-    while (fragmento2.firstChild) {
-      fragmento2.removeChild(fragmento2.firstChild);
-    }
-    while (fragmento.firstChild) {
-      fragmento.removeChild(fragmento.firstChild);
-    }
+//     //eliminamos el contenido del cATALOGO PARA MOSTRAR EL CONTENIDO FILTRADO
+//     const element = document.querySelector(".esteSi");
+//     element.parentElement.remove();
+//     while (fragmento2.firstChild) {
+//       fragmento2.removeChild(fragmento2.firstChild);
+//     }
+//     while (fragmento.firstChild) {
+//       fragmento.removeChild(fragmento.firstChild);
+//     }
 
 
-    datos.forEach((datos) => {
-      if (datos.Inventario >= 1 /*&& datos.Descuento == 0 */ && (FILTROS === "VER TODOS" || datos.Categoria == FILTROS || FILTROS === "CON DESCUENTOS" && datos.Descuento != 0)) {
-        //mostramos los datos en el catalogo!!! <--------------------------------------------------
-        contenedorId = 0;
-        fragmento2 = MostrarEnCatalogo(datos, contenedorId);
-      }
+//     datos.forEach((datos) => {
+//       if (datos.Inventario >= 1 /*&& datos.Descuento == 0 */ && (FILTROS === "VER TODOS" || datos.Categoria == FILTROS || FILTROS === "CON DESCUENTOS" && datos.Descuento != 0)) {
+//         //mostramos los datos en el catalogo!!! <--------------------------------------------------
+//         contenedorId = 0;
+//         fragmento2 = MostrarEnCatalogo(datos, contenedorId);
+//       }
 
-      mBotones.mostrarBotones();
+//       mBotones.mostrarBotones();
 
       
-    });
-    let clone = document.importNode(template, true);
-    fragmento.appendChild(clone);
-    document.body.appendChild(fragmento);//agregamos el contenedor padre
-    document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las cards
-    //MOSTRAMOS EL BOTON QUE SELECCIONAMOS
-    console.log("Botón seleccionado:", FILTROS);
-    //CAMBIAMOS EL NOMBRE AL BOTON PRINCIPAL DEL MENU DESPLEGABLE POR EL SELECCIONADO
-    //nombreDesplegable.textContent = FILTROS;
+//     });
+//     let clone = document.importNode(template, true);
+//     fragmento.appendChild(clone);
+//     document.body.appendChild(fragmento);//agregamos el contenedor padre
+//     document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las cards
+//     //MOSTRAMOS EL BOTON QUE SELECCIONAMOS
+//     console.log("Botón seleccionado:", FILTROS);
+//     //CAMBIAMOS EL NOMBRE AL BOTON PRINCIPAL DEL MENU DESPLEGABLE POR EL SELECCIONADO
+//     //nombreDesplegable.textContent = FILTROS;
 
-    const dropdownItems = document.querySelectorAll(".dropdown-item");
+//     const dropdownItems = document.querySelectorAll(".dropdown-item");
 
-    dropdownItems.forEach((item) => {
-      item.style.fontWeight = 'normal';
-    });
-    boton.style.fontWeight = 'bold';
-
-
-    // Eliminamos la llamada redundante a escucharBotones() aquí
-    // escucharBotones();
+//     dropdownItems.forEach((item) => {
+//       item.style.fontWeight = 'normal';
+//     });
+//     boton.style.fontWeight = 'bold';
 
 
-    var a = true;
+//     // Eliminamos la llamada redundante a escucharBotones() aquí
+//     // escucharBotones();
 
-    descu.porDeDescuento();
 
-    varianteDeMedidas.cambiarVariantes()
+//     var a = true;
 
-    subirScroll.subir()
+//     descu.porDeDescuento();
 
-  });
-  //ESTO SUBE AL DOM LAS CATEGORIAS
+//     varianteDeMedidas.cambiarVariantes()
 
-  lil.appendChild(boton);
+//     subirScroll.subir()
 
-  dropdownMenu.appendChild(lil);
-  const lil2 = document.createElement("ul");
-  dropdownMenu.appendChild(lil2);
-});
+//   });
+//   //ESTO SUBE AL DOM LAS CATEGORIAS
+
+//   lil.appendChild(boton);
+
+//   dropdownMenu.appendChild(lil);
+//   const lil2 = document.createElement("ul");
+//   dropdownMenu.appendChild(lil2);
+// });
 
 
 
@@ -333,7 +365,7 @@ datos.forEach(datos => {
 
 });
 
-template.querySelector("H3").textContent = 'Precios solo en efectivo.';
+template.querySelector("H3").textContent = '';
 
 
 let clone = document.importNode(template, true);
