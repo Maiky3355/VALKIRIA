@@ -84,7 +84,7 @@ if (h5Element) {
         h5Element.textContent = descripcionTexto;
 
         // Verifica la longitud del texto y ajusta el tamaño de la fuente
-        if (descripcionTexto.length < 40) {
+        if (descripcionTexto.length < 35) {
             h5Element.style.fontSize = '2VH'; // Tamaño si es corto
         } else {
             h5Element.style.fontSize = '1.4VH'; // Tamaño si es largo o igual a 20
@@ -137,7 +137,7 @@ if (h5Element) {
 
     template2.querySelector("small").innerHTML = "<del>$" + precioCatalogo + "</del>";
     template2.querySelector("h7").textContent = "$" + precioCatalogo2;
-    template2.querySelector("h11").textContent = "Precio sin imp. nacionales: $" + precioCatalogo3;
+    template2.querySelector("h11").textContent = "Sin imp. nac.: $" + precioCatalogo3;
 
 } else {
 
@@ -159,7 +159,7 @@ if (h5Element) {
 
     template2.querySelector("small").textContent ="";
     template2.querySelector("h7").textContent =  "$" + precioCatalogo;
-    template2.querySelector("h11").textContent = "Precio sin imp. nacionales: $" + precioCatalogo3;
+    template2.querySelector("h11").textContent = "Sin imp. nac.: $" + precioCatalogo3;
 }
 
   //seleccionamos el boton y le asignamos el id que corresponde
