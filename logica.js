@@ -84,8 +84,8 @@ if (h5Element) {
         h5Element.textContent = descripcionTexto;
 
         // Verifica la longitud del texto y ajusta el tamaño de la fuente
-        if (descripcionTexto.length < 35) {
-            h5Element.style.fontSize = '2VH'; // Tamaño si es corto
+        if (descripcionTexto.length < 26) {
+            h5Element.style.fontSize = '1.8VH'; // Tamaño si es corto
         } else {
             h5Element.style.fontSize = '1.4VH'; // Tamaño si es largo o igual a 20
         }
