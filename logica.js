@@ -70,34 +70,34 @@ function MostrarEnCatalogo(datos, contenedorId) {
   //const imageId = `gimg-${contenedorId}-${datos.Artículo}`;
   template2.querySelector("img").setAttribute("src", "./imgcarrito/" + (datos.Artículo) + ".jpg");
   template2.querySelector("img").setAttribute("id", "img" + datos.Artículo);
-// Selecciona el elemento H5 dentro de tu template
-const h5Element = template2.querySelector("h5");
+  // Selecciona el elemento H5 dentro de tu template
+  const h5Element = template2.querySelector("h5");
 
-// Verifica si se encontró el elemento H5
-if (h5Element) {
+  // Verifica si se encontró el elemento H5
+  if (h5Element) {
     // Obtén la descripción del objeto de datos
     const descripcionTexto = datos.Descripción;
 
     // Verifica si la descripción es un string válido
     if (typeof descripcionTexto === 'string') {
-        // Asigna el texto al H5
-        h5Element.textContent = descripcionTexto;
+      // Asigna el texto al H5
+      h5Element.textContent = descripcionTexto;
 
-        // Verifica la longitud del texto y ajusta el tamaño de la fuente
-        if (descripcionTexto.length < 26) {
-            h5Element.style.fontSize = '1.8VH'; // Tamaño si es corto
-        } else {
-            h5Element.style.fontSize = '1.4VH'; // Tamaño si es largo o igual a 20
-        }
+      // Verifica la longitud del texto y ajusta el tamaño de la fuente
+      if (descripcionTexto.length < 26) {
+        h5Element.style.fontSize = '1.8VH'; // Tamaño si es corto
+      } else {
+        h5Element.style.fontSize = '1.4VH'; // Tamaño si es largo o igual a 20
+      }
     } else {
-        // Manejo opcional si la descripción no es un string
-        h5Element.textContent = 'Descripción no válida';
-        h5Element.style.fontSize = '1.4VH'; // Un tamaño por defecto
-        console.warn('datos.Descripción no es un string:', datos.Descripción);
+      // Manejo opcional si la descripción no es un string
+      h5Element.textContent = 'Descripción no válida';
+      h5Element.style.fontSize = '1.4VH'; // Un tamaño por defecto
+      console.warn('datos.Descripción no es un string:', datos.Descripción);
     }
-} else {
+  } else {
     console.warn('Elemento h5 no encontrado en template2');
-}
+  }
 
   //llamamos la funcion del modulo para agregar las variantes 
   varianteDeMedidas.AgregaVariantes(datos, template2);
@@ -121,25 +121,25 @@ if (h5Element) {
 
     // Formatear recién al final
     precioCatalogo = new Intl.NumberFormat('es-MX', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     }).format(precioCatalogo);
 
     precioCatalogo2 = new Intl.NumberFormat('es-MX', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     }).format(precioCatalogo2);
 
     precioCatalogo3 = new Intl.NumberFormat('es-MX', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     }).format(precioCatalogo3);
 
     template2.querySelector("small").innerHTML = "<del>$" + precioCatalogo + "</del>";
     template2.querySelector("h7").textContent = "$" + precioCatalogo2;
     template2.querySelector("h11").textContent = "Sin imp. nac.: $" + precioCatalogo3;
 
-} else {
+  } else {
 
     // Precio final
     let precioCatalogo = (Number(datos.Venta.replace(/,/g, ".")) * Number(datos.DOLAR));
@@ -148,19 +148,19 @@ if (h5Element) {
     let precioCatalogo3 = precioCatalogo / 1.21;
 
     precioCatalogo = new Intl.NumberFormat('es-MX', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     }).format(precioCatalogo);
 
     precioCatalogo3 = new Intl.NumberFormat('es-MX', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     }).format(precioCatalogo3);
 
-    template2.querySelector("small").textContent ="";
-    template2.querySelector("h7").textContent =  "$" + precioCatalogo;
+    template2.querySelector("small").textContent = "";
+    template2.querySelector("h7").textContent = "$" + precioCatalogo;
     template2.querySelector("h11").textContent = "Sin imp. nac.: $" + precioCatalogo3;
-}
+  }
 
   //seleccionamos el boton y le asignamos el id que corresponde
   const addButton = template2.querySelector("button");
@@ -193,149 +193,146 @@ var FILTROS = "";
 //creamos una variable para las unidades a ser agregadas al itemCarrito
 let unidades = 1;
 
-// // Obtener el contenedor del menú desplegable para buscar productos por categoria
-// const dropdownContainer = document.querySelector(".porCategoria");
-// const dropdownMenu = dropdownContainer.querySelector(".porCategoriaUl");
-// const nombreDesplegable = dropdownContainer.querySelector(".nombreDesplegable");
+// Obtener el contenedor del menú desplegable para buscar productos por categoria
+const dropdownContainer = document.querySelector(".porCategoria");
+const dropdownMenu = dropdownContainer.querySelector(".porCategoriaUl");
+const nombreDesplegable = dropdownContainer.querySelector(".nombreDesplegable");
 
-// // Crear un conjunto (Set) para almacenar las categorías únicas
-// const categoriasUnicas = new Set();
+// Crear un conjunto (Set) para almacenar las categorías únicas
+const categoriasUnicas = new Set();
 
-// // Iterar sobre el array de datos y agregar cada categoría al conjunto
-// datos.forEach(objeto => {
-//   //si las categorias tienen productos con stock la agregamos al menu desplegable
-//   categoriasUnicas.add("VER TODOS");
-//   categoriasUnicas.add("CON DESCUENTOS");
-
-
-//   if (objeto.Inventario >= 1) {
-//     categoriasUnicas.add(objeto.Categoria);
-
-//   }
-// });
+// Iterar sobre el array de datos y agregar cada categoría al conjunto
+datos.forEach(objeto => {
+  //si las categorias tienen productos con stock la agregamos al menu desplegable
+  categoriasUnicas.add("VER TODOS");
+  categoriasUnicas.add("CON DESCUENTOS");
 
 
-// // Crear los elementos de lista dinámicamente utilizando las categorías únicas
-// categoriasUnicas.forEach(categoria => {
-//   const lil = document.createElement("li");
-//   const boton = document.createElement("button");
-//   boton.textContent = categoria;
-//   boton.className = "dropdown-item";
-//   boton.type = "button";
-//   // Agregar evento de clic al botón
-//   boton.addEventListener("click", () => {
-  
-//     FILTROS = boton.textContent;
+  if (objeto.Inventario >= 1) {
+    categoriasUnicas.add(objeto.Categoria);
 
-//     //eliminamos el contenido del cATALOGO PARA MOSTRAR EL CONTENIDO FILTRADO
-//     const element = document.querySelector(".esteSi");
-//     element.parentElement.remove();
-//     while (fragmento2.firstChild) {
-//       fragmento2.removeChild(fragmento2.firstChild);
-//     }
-//     while (fragmento.firstChild) {
-//       fragmento.removeChild(fragmento.firstChild);
-//     }
+  }
+});
 
 
-//     datos.forEach((datos) => {
-//       if (datos.Inventario >= 1 /*&& datos.Descuento == 0 */ && (FILTROS === "VER TODOS" || datos.Categoria == FILTROS || FILTROS === "CON DESCUENTOS" && datos.Descuento != 0)) {
-//         //mostramos los datos en el catalogo!!! <--------------------------------------------------
-//         contenedorId = 0;
-//         fragmento2 = MostrarEnCatalogo(datos, contenedorId);
-//       }
+// Crear los elementos de lista dinámicamente utilizando las categorías únicas
+categoriasUnicas.forEach(categoria => {
+  const lil = document.createElement("li");
+  const boton = document.createElement("button");
+  boton.textContent = categoria;
+  boton.className = "btn btn-outline-dark rounded-pill m-1 categoria-btn";
+  boton.type = "button";
+  // Agregar evento de clic al botón
+  boton.addEventListener("click", () => {
 
-//       mBotones.mostrarBotones();
+    FILTROS = boton.textContent;
 
-      
-//     });
-//     let clone = document.importNode(template, true);
-//     fragmento.appendChild(clone);
-//     document.body.appendChild(fragmento);//agregamos el contenedor padre
-//     document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las cards
-//     //MOSTRAMOS EL BOTON QUE SELECCIONAMOS
-//     console.log("Botón seleccionado:", FILTROS);
-//     //CAMBIAMOS EL NOMBRE AL BOTON PRINCIPAL DEL MENU DESPLEGABLE POR EL SELECCIONADO
-//     //nombreDesplegable.textContent = FILTROS;
-
-//     const dropdownItems = document.querySelectorAll(".dropdown-item");
-
-//     dropdownItems.forEach((item) => {
-//       item.style.fontWeight = 'normal';
-//     });
-//     boton.style.fontWeight = 'bold';
+    //eliminamos el contenido del cATALOGO PARA MOSTRAR EL CONTENIDO FILTRADO
+    const element = document.querySelector(".esteSi");
+    element.parentElement.remove();
+    while (fragmento2.firstChild) {
+      fragmento2.removeChild(fragmento2.firstChild);
+    }
+    while (fragmento.firstChild) {
+      fragmento.removeChild(fragmento.firstChild);
+    }
 
 
-//     // Eliminamos la llamada redundante a escucharBotones() aquí
-//     // escucharBotones();
+    datos.forEach((datos) => {
+      if (datos.Inventario >= 1 /*&& datos.Descuento == 0 */ && (FILTROS === "VER TODOS" || datos.Categoria == FILTROS || FILTROS === "CON DESCUENTOS" && datos.Descuento != 0)) {
+        //mostramos los datos en el catalogo!!! <--------------------------------------------------
+        contenedorId = 0;
+        fragmento2 = MostrarEnCatalogo(datos, contenedorId);
+      }
+
+      mBotones.mostrarBotones();
 
 
-//     var a = true;
+    });
+    let clone = document.importNode(template, true);
+    fragmento.appendChild(clone);
+    document.body.appendChild(fragmento);//agregamos el contenedor padre
+    document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las cards
+    //MOSTRAMOS EL BOTON QUE SELECCIONAMOS
+    console.log("Botón seleccionado:", FILTROS);
+    //CAMBIAMOS EL NOMBRE AL BOTON PRINCIPAL DEL MENU DESPLEGABLE POR EL SELECCIONADO
+    //nombreDesplegable.textContent = FILTROS;
 
-//     descu.porDeDescuento();
+    const botones = document.querySelectorAll(".categoria-btn");
 
-//     varianteDeMedidas.cambiarVariantes()
+    botones.forEach(btn => {
+      btn.classList.remove("btn-dark");
+      btn.classList.add("btn-outline-dark");
+    });
 
-//     subirScroll.subir()
+    boton.classList.remove("btn-outline-dark");
+    boton.classList.add("btn-dark");
+    // Eliminamos la llamada redundante a escucharBotones() aquí
+    // escucharBotones();
 
-//   });
-//   //ESTO SUBE AL DOM LAS CATEGORIAS
 
-//   lil.appendChild(boton);
+    var a = true;
+    descu.porDeDescuento();
+    varianteDeMedidas.cambiarVariantes()
 
-//   dropdownMenu.appendChild(lil);
-//   const lil2 = document.createElement("ul");
-//   dropdownMenu.appendChild(lil2);
-// });
+    subirScroll.subir()
 
+  });
+  //ESTO SUBE AL DOM LAS CATEGORIAS
+
+  lil.appendChild(boton);
+
+  dropdownMenu.appendChild(lil);
+ // const lil2 = document.createElement("ul");
+ // dropdownMenu.appendChild(lil2);
+});
 
 
 
 
-// function obtenerURL() {
-//   const urlParams = new URLSearchParams(window.location.search);
 
-//   const FILTROS = urlParams.get('filtro') || 'todos'; // Si no hay filtro, se usa 'todos'
+function obtenerURL() {
+  const urlParams = new URLSearchParams(window.location.search);
 
-//   //eliminamos el contenido del cATALOGO PARA MOSTRAR EL CONTENIDO FILTRADO
-//   const element = document.querySelector(".esteSi");
-//   element.parentElement.remove();
-//   while (fragmento2.firstChild) {
-//     fragmento2.removeChild(fragmento2.firstChild);
-//   }
-//   while (fragmento.firstChild) {
-//     fragmento.removeChild(fragmento.firstChild);
-//   }
-// let FILTRO=FILTROS.toUpperCase();
-//   datos.forEach((datos) => {
-//     if (datos.Inventario >= 1 /*&& datos.Descuento == 0 */ && (FILTRO === "TODOS" || datos.Categoria == FILTRO)) {
-//       //mostramos los datos en el catalogo!!! <--------------------------------------------------
-//       contenedorId = 0;
-//       fragmento2 = MostrarEnCatalogo(datos, contenedorId);
-//     }
+  const FILTROS = urlParams.get('filtro') || 'todos'; // Si no hay filtro, se usa 'todos'
 
-//     mBotones.mostrarBotones();
-//   });
-//   let clone = document.importNode(template, true);
-//   fragmento.appendChild(clone);
-//   document.body.appendChild(fragmento);//agregamos el contenedor padre
-//   document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las cards
-//   //MOSTRAMOS EL BOTON QUE SELECCIONAMOS
-//   console.log("Botón seleccionado:", FILTRO);
-//   //CAMBIAMOS EL NOMBRE AL BOTON PRINCIPAL DEL MENU DESPLEGABLE POR EL SELECCIONADO
-//   nombreDesplegable.textContent = FILTRO;
-//   //PONEMOS A ESCUCHAR LOS BOTONES NUEVAMENTE
+  //eliminamos el contenido del cATALOGO PARA MOSTRAR EL CONTENIDO FILTRADO
+  const element = document.querySelector(".esteSi");
+  element.parentElement.remove();
+  while (fragmento2.firstChild) {
+    fragmento2.removeChild(fragmento2.firstChild);
+  }
+  while (fragmento.firstChild) {
+    fragmento.removeChild(fragmento.firstChild);
+  }
+  let FILTRO = FILTROS.toUpperCase();
+  datos.forEach((datos) => {
+    if (datos.Inventario >= 1 /*&& datos.Descuento == 0 */ && (FILTRO === "TODOS" || datos.Categoria == FILTRO)) {
+      //mostramos los datos en el catalogo!!! <--------------------------------------------------
+      contenedorId = 0;
+      fragmento2 = MostrarEnCatalogo(datos, contenedorId);
+    }
 
-//   escucharBotones();
-//   var a = true;
+    mBotones.mostrarBotones();
+  });
+  let clone = document.importNode(template, true);
+  fragmento.appendChild(clone);
+  document.body.appendChild(fragmento);//agregamos el contenedor padre
+  document.getElementById(contenedorId).appendChild(fragmento2); //agregamos las cards
+  //MOSTRAMOS EL BOTON QUE SELECCIONAMOS
+  console.log("Botón seleccionado:", FILTRO);
+  //CAMBIAMOS EL NOMBRE AL BOTON PRINCIPAL DEL MENU DESPLEGABLE POR EL SELECCIONADO
+  nombreDesplegable.textContent = FILTRO;
+  //PONEMOS A ESCUCHAR LOS BOTONES NUEVAMENTE
+  escucharBotones();
+  var a = true;
 
-//   descu.porDeDescuento();
+  descu.porDeDescuento();
 
-//   varianteDeMedidas.cambiarVariantes()
+  varianteDeMedidas.cambiarVariantes()
 
-//   subirScroll.subir()
-
-// };
+  subirScroll.subir()
+};
 
 
 
@@ -398,9 +395,9 @@ function escucharBotones() {
     console.log("Click detectado en el documento."); // Log 1: Se dispara en cada clic en cualquier parte del documento
     // Usamos event.target.closest() para verificar si el clic fue en un botón
     // con un ID que empieza por 'idbot'. Esto funciona para botones dinámicos.
-      const btn = event.target.closest('button[id^=idbot]');
+    const btn = event.target.closest('button[id^=idbot]');
 
-      if (btn) {
+    if (btn) {
       console.log("Botón de agregar al carrito clicado:", btn.id); // Log 2: Solo se dispara si se hizo clic en un botón de carrito
       event.stopImmediatePropagation(); // Detiene la propagación del evento de forma inmediata
 
@@ -419,47 +416,47 @@ function escucharBotones() {
       let selectElement = document.getElementById('idbot' + productId); // Obtener el elemento select por su id
 
       let unidades = 1; // Valor por defecto
-        if (selectElement) {
-          unidades = Number(selectElement.value);
+      if (selectElement) {
+        unidades = Number(selectElement.value);
         console.log("Unidades seleccionadas:", unidades); // Log 4
-          } else {
+      } else {
         console.log("Error: selectElement (cantidad) no encontrado para id:", productId); // Log 5
-          }
-      
+      }
+
 
       let selectElement77 = document.getElementById('med' + productId); // Obtener el elemento select por su id
-        var medidas = null;
-        var textMedidas = "";
-        if (selectElement77 != null) {
+      var medidas = null;
+      var textMedidas = "";
+      if (selectElement77 != null) {
         medidas = selectElement77.value; // Obtener el valor seleccionado del elemento select
-          if (selectElement77.selectedIndex >= 0) {
-              const selectedOptionElement = selectElement77.options[selectElement77.selectedIndex];
-              textMedidas = selectedOptionElement.textContent;
+        if (selectElement77.selectedIndex >= 0) {
+          const selectedOptionElement = selectElement77.options[selectElement77.selectedIndex];
+          textMedidas = selectedOptionElement.textContent;
           console.log("Medidas seleccionadas:", medidas, "Texto:", textMedidas); // Log 6
-      } else {
+        } else {
           console.log("Ninguna opción de medida seleccionada para id:", productId); // Log 7
-      }
-          } else {
-        console.log("Elemento de medida (selectElement77) no encontrado para id:", productId); // Log 8
         }
+      } else {
+        console.log("Elemento de medida (selectElement77) no encontrado para id:", productId); // Log 8
+      }
 
       let selectElement7 = document.getElementById('var' + productId); // Obtener el elemento select por su id
-        var varied = null;
-        var varied2 = "";
-        if (selectElement7 != null) {
+      var varied = null;
+      var varied2 = "";
+      if (selectElement7 != null) {
         varied = selectElement7.value; // Obtener el valor seleccionado del elemento select
-          if (selectElement7.selectedIndex >= 0) {
-            const selectedOptionElement2 = selectElement7.options[selectElement7.selectedIndex];
-            varied2 = selectedOptionElement2.textContent;
-            console.log("Variedad seleccionada:", varied, "Texto:", varied2); // Log 9
+        if (selectElement7.selectedIndex >= 0) {
+          const selectedOptionElement2 = selectElement7.options[selectElement7.selectedIndex];
+          varied2 = selectedOptionElement2.textContent;
+          console.log("Variedad seleccionada:", varied, "Texto:", varied2); // Log 9
         } else {
           console.log("Ninguna opción de variedad seleccionada para id:", productId); // Log 10
-          }
-            } else {
-        console.log("Elemento de variedad (selectElement7) no encontrado para id:", productId); // Log 11
         }
+      } else {
+        console.log("Elemento de variedad (selectElement7) no encontrado para id:", productId); // Log 11
+      }
 
-        //buscamos los datos del boton precionado
+      //buscamos los datos del boton precionado
       var tit = buscarDatos.buscarId(parseInt(productId));
       var pre = buscarDatos.buscarIdPrecio(parseInt(productId));
       var dol = buscarDatos.buscarIdDol(parseInt(productId));
@@ -467,15 +464,15 @@ function escucharBotones() {
       var desc = buscarDatos.buscarDescuento(parseInt(productId));
       console.log("Datos del producto:", { tit, pre, dol, stock, desc }); // Log 12
 
-        let agregarOModificarItem = (articuloId, Artículo, Descripción, Venta, DOLAR, Unidades, Descuento) => {
+      let agregarOModificarItem = (articuloId, Artículo, Descripción, Venta, DOLAR, Unidades, Descuento) => {
         console.log("Llamando a agregarOModificarItem con:", { articuloId, Artículo, Descripción, Venta, DOLAR, Unidades, Descuento }); // Log 13
-          let siEstaId = itemCarrito.find(artic => artic.Artículo === (parseInt(articuloId)));
+        let siEstaId = itemCarrito.find(artic => artic.Artículo === (parseInt(articuloId)));
 
-          if (siEstaId) {
+        if (siEstaId) {
           console.log("Producto ya en carrito:", siEstaId); // Log 14
-            if ((siEstaId.Unidades + Unidades) <= stock) {
-              siEstaId.Unidades += Unidades;
-              localStor.guardarEnLocalStorage(itemCarrito);
+          if ((siEstaId.Unidades + Unidades) <= stock) {
+            siEstaId.Unidades += Unidades;
+            localStor.guardarEnLocalStorage(itemCarrito);
             agregar(Descripción, articuloId); // Usar Descripción en lugar de tit para la alerta
             console.log("Unidades actualizadas y guardadas."); // Log 15
           } else {
@@ -485,49 +482,49 @@ function escucharBotones() {
             console.log("No hay stock suficiente para actualizar."); // Log 16
             return;
           }
-      } else {
+        } else {
           console.log("Producto nuevo para carrito."); // Log 17
-            if ((Unidades) <= stock) {
-              if (Descuento != 0) {
-                let ventaCD = ((Venta) * (1 - (Number(Descuento) / 100)));
-                itemCarrito.push({ Artículo, Descripción, Venta: ventaCD.toString(), DOLAR, Unidades });
-  localStor.guardarEnLocalStorage(itemCarrito);
+          if ((Unidades) <= stock) {
+            if (Descuento != 0) {
+              let ventaCD = ((Venta) * (1 - (Number(Descuento) / 100)));
+              itemCarrito.push({ Artículo, Descripción, Venta: ventaCD.toString(), DOLAR, Unidades });
+              localStor.guardarEnLocalStorage(itemCarrito);
               agregar(Descripción, articuloId); // Usar Descripción en lugar de tit para la alerta
               console.log("Producto con descuento agregado y guardado."); // Log 18
 
-              } else {
-                itemCarrito.push({ Artículo, Descripción, Venta, DOLAR, Unidades });
-                localStor.guardarEnLocalStorage(itemCarrito);
+            } else {
+              itemCarrito.push({ Artículo, Descripción, Venta, DOLAR, Unidades });
+              localStor.guardarEnLocalStorage(itemCarrito);
               agregar(Descripción, articuloId); // Usar Descripción en lugar de tit para la alerta
               console.log("Producto sin descuento agregado y guardado."); // Log 19
-              }
-            } else {
-              let suceso = "NO HAY STOCK SUFICIENTE";
-        let tipoAlert = "alert-danger";
-              alertas.alertAgrego(Descripción, suceso, tipoAlert);
-            console.log("No hay stock suficiente para agregar nuevo producto."); // Log 20
-              return;
             }
+          } else {
+            let suceso = "NO HAY STOCK SUFICIENTE";
+            let tipoAlert = "alert-danger";
+            alertas.alertAgrego(Descripción, suceso, tipoAlert);
+            console.log("No hay stock suficiente para agregar nuevo producto."); // Log 20
+            return;
           }
-};
-
-        if (medidas == null && varied == null) {
-        agregarOModificarItem(productId, (parseInt(productId)), tit, pre, dol, unidades, desc);
-        } else {
-          if (varied == null) {
-            varied2 = "";
-          }
-        let articuloIdModificado = medidas + '9990' + productId + varied; // Concatenar como string
-          agregarOModificarItem(articuloIdModificado, (parseInt(articuloIdModificado)), `${tit}  ${textMedidas} ${varied2}`, pre, dol, unidades, desc);
         }
+      };
+
+      if (medidas == null && varied == null) {
+        agregarOModificarItem(productId, (parseInt(productId)), tit, pre, dol, unidades, desc);
+      } else {
+        if (varied == null) {
+          varied2 = "";
+        }
+        let articuloIdModificado = medidas + '9990' + productId + varied; // Concatenar como string
+        agregarOModificarItem(articuloIdModificado, (parseInt(articuloIdModificado)), `${tit}  ${textMedidas} ${varied2}`, pre, dol, unidades, desc);
+      }
 
       console.log("Estado actual de itemCarrito:", itemCarrito); // Log 21
 
-        EliminarV();
-        total();
-      }
-    });
-  }
+      EliminarV();
+      total();
+    }
+  });
+}
 function EliminarV() {
 
   //SELECCIONAMOS LAS LI DEL CANVAS PARA HACERLAS ESCUCHAR
@@ -556,7 +553,7 @@ function EliminarV() {
         alertas.alertAgrego(prodAElimin, suceso, tipoAlert);
 
 
-    }
+      }
 
 
     })
@@ -574,7 +571,7 @@ function EliminarV() {
           actualizarCarrito();
           actualizarEnlaceWhatsApp();
           return siEsta.Descripción
-  }
+        }
         actualizarCarrito();
 
       } else {
@@ -604,7 +601,7 @@ function EliminarV() {
       return siEsta.Descripción
     }
     actualizarCarrito();
-};
+  };
 }
 
 
@@ -717,7 +714,7 @@ function generarEnlaceWhatsApp() {
 
   // Construir el texto del mensaje con la información de los duplicados y los precios
   let textoCarrito = "Hola! Me interesan estos productos de la web:";
-  let UnidadesProductosTotales=0;
+  let UnidadesProductosTotales = 0;
 
 
   itemCarrito.forEach(producto => {
@@ -726,7 +723,7 @@ function generarEnlaceWhatsApp() {
 
     textoCarrito += `\n\n ${producto.Unidades} - ${producto.Descripción} -  $${precioCatalogo}`;
 
-UnidadesProductosTotales +=producto.Unidades;
+    UnidadesProductosTotales += producto.Unidades;
   });
   let tota = total();
   textoCarrito += `\n\n--- PRECIO TOTAL DEL CARRITO:${tota} \n\n`; // Agregar un salto de línea adicional
@@ -821,8 +818,8 @@ function filtrarConBusqueda() {
 
     varianteDeMedidas.cambiarVariantes()
 
-// Eliminamos la llamada redundante a escucharBotones() aquí
-// escucharBotones();
+    // Eliminamos la llamada redundante a escucharBotones() aquí
+    // escucharBotones();
     subirScroll.subir();
 
   };
