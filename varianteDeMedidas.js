@@ -75,7 +75,9 @@ let i=0;
           // Podrías poner una opción por defecto o dejarlo vacío.
           nuevasOpciones = '<option value="">--sin variantes--</option>';
          // console.warn(`datos.BAlterna está vacío o no definido para el artículo: ${datos.Artículo}`);
-      }
+       if (selectElement4) eliminarDelDom.removeElements([selectElement4]);
+
+        }
 
       // Asignar las opciones generadas al select tVariante
       selectElement4.innerHTML = nuevasOpciones;
