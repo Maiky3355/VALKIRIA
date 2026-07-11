@@ -506,6 +506,7 @@ small {
     padding:2px 4px;
     transition:.2s;
     font-weight:5;
+      color: rgb(6, 6, 6);
 }
 
 .categoria-btn:hover{
