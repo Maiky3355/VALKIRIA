@@ -165,8 +165,7 @@ function MostrarEnCatalogo(datos, contenedorId) {
   //seleccionamos el boton y le asignamos el id que corresponde
   const addButton = template2.querySelector("button");
   addButton.setAttribute("id", "idbot" + (datos.Artículo));
-  console.log("Botón de agregar al carrito creado con ID:", addButton.id); // Agregado para depuración
-
+ 
   //hacemos un clon y lo subimos al fragmento correspondiente para poder repetirlo. clone 1 contenedor . clone 2 etiquetas restantes
 
   let clone2 = document.importNode(template2, true);
@@ -392,14 +391,12 @@ function escucharBotones() {
   // Esto garantiza que el listener esté siempre activo, sin importar si los elementos
   // del DOM son agregados o eliminados dinámicamente.
   document.addEventListener('click', event => {
-    console.log("Click detectado en el documento."); // Log 1: Se dispara en cada clic en cualquier parte del documento
-    // Usamos event.target.closest() para verificar si el clic fue en un botón
+     // Usamos event.target.closest() para verificar si el clic fue en un botón
     // con un ID que empieza por 'idbot'. Esto funciona para botones dinámicos.
     const btn = event.target.closest('button[id^=idbot]');
 
     if (btn) {
-      console.log("Botón de agregar al carrito clicado:", btn.id); // Log 2: Solo se dispara si se hizo clic en un botón de carrito
-      event.stopImmediatePropagation(); // Detiene la propagación del evento de forma inmediata
+       event.stopImmediatePropagation(); // Detiene la propagación del evento de forma inmediata
 
       var da = btn.id; // Obtenemos el ID del botón que fue clicado
       var regex = /(\d+)/g; // Expresión regular corregida
